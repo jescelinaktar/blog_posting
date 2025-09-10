@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-4 mb-3">{% block title %} Blog {% endblock %}</h1>
+        <hr class="my-4">
+            <div class="card mb-4">    <!-- Card to display the full blog details -->
+                <div class="card-body">
+                    <h2 class="card-title">{{ blog.title }}</h2>
+                    <p class="card-text">{{ blog.content }}</p>
+                    <p class="card-text">
+                        <small class="text-muted">Author: {{ blog.author }}</small>
+                    </p>
+                    <!-- Buttons for editing and deleting the blog -->
+                    <div class="d-flex">
+                        <form method="GET" action="/edit_blog/{{ blog.blog_id }}">
+                            <input type="submit" value="Edit blog" class="btn btn-primary me-2">
+                        </form>
+                        <form method="POST" action="/delete_blog/{{ blog.blog_id }}">
+                            <input type="submit" value="Delete blog" class="btn btn-danger">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <hr class="my-4">
+    </div>
+{% endblock %}

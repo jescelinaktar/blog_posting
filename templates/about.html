@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-4 mb-3">{% block title %} About {% endblock %}</h1>
+        <hr class="my-4">
+            <div class="card mb-4">
+                    <div class="card-body">
+                        <h3>Welcome to Jescelin's Blog!</h3>
+                        <p>This blog platform was developed as part of a college assignment for my programming module,
+                            the aim was to build a simple web application using Flask to manage blog posts so that the
+                            user can view, read, edit, delete and even add their own blog posts!</p>
+                        <p>Want to contribute your own story? Head over to the <a href="{{ url_for('create_blog') }}">Create Blog</a> page and share your own blog.</p>
+                        <p>Thanks for stopping by!</p>
+                    </div>
+            </div>
+            <hr class="my-4">
+    </div>
+{% endblock %}
+

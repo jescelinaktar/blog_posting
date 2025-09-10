@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-8">
+        <h1> {% block title %} Edit Blog Post {% endblock %}</h1>
+
+        <form method="POST" action="/edit_blog/{{ blog.blog_id }}">
+            <!-- Input fields with the old content filled in -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title: </label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ blog.title }}">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content:</label>
+                <textarea id="content" class="form-control" name="content" rows="4" cols="32">{{ blog.content }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author:</label>
+                <input type="text" class="form-control" id="author" name="author" value="{{ blog.author }}">
+            </div>
+            {% if error %}   <!-- Will display an error message if there is an error -->
+                <p class="alert alert-danger">{{ error }}</p>
+            {% endif %}
+            <input type="submit" value="Save Changes" class="btn btn-primary">   <!-- Submit button to save changes -->
+        </form>
+    </div>
+{% endblock %}

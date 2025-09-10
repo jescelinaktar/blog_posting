@@ -1,0 +1,21 @@
+{% extends 'base.html' %}   <!-- Inherits the structure from base.html -->
+
+{% block content %}   <!-- This block defines the main content of this page -->
+    <div class="container">
+        <h1 class="mt-4 mb-3">{% block title %} Blogs {% endblock %}</h1>
+        <hr class="my-4">
+
+        {% for blog in blogs %}   <!-- Loop through all blogs passed from the Flask backend -->
+            <div class="card mb-4">
+                    <div class="card-body">
+                        <a href="./view_details/{{ blog.blog_id }}"><h2 class="card-title">{{ blog.title }}</h2></a>
+                        <p class="card-text">{{ (" ".join(blog.content.split(" ")[:10]) + "...") if blog.content.split(" ")|length > 15 else blog.content}}</p>
+                        <p class="card-text">
+                            <small class="text-muted">Author: {{ blog.author }}</small>
+                        </p>
+                    </div>
+            </div>
+            <hr class="my-4">
+        {% endfor %}
+    </div>
+{% endblock %}
